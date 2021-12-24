@@ -1,0 +1,2413 @@
+{
+	"info": {
+		"_postman_id": "b557fe79-d80b-4093-b8d8-2df5fb8bff76",
+		"name": "RESTFul风格接口",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "管理员端",
+			"item": [
+				{
+					"name": "首页",
+					"item": [
+						{
+							"name": "首页",
+							"item": [
+								{
+									"name": "登录",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"123456\",\n    \"last_login_terminal\": 1,\n    \"last_login_version\": \"0.0.1\"\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/index/index/login",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"index",
+												"index",
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "访问令牌",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"authorization\": \"WvSWk74tcg97vxmW6jbmd6QY6v14Pw64w0umF-R2eicfhL-uFJOn_1640229555\"\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/index/index/access-token",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"index",
+												"index",
+												"access-token"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "个人信息",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/index/index/person",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"index",
+												"index",
+												"person"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "密码变更",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"password\": \"123456\",\n\t\"new_password\": \"12345678\"\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/index/index/password",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"index",
+												"index",
+												"password"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "缓存刷新",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"password\": \"123456789\",\n\t\"new_password\": \"123456\"\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/index/index/cache",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"index",
+												"index",
+												"cache"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "表设计导出（Markdown格式）",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/index/index/table-schema/admin_behavior_log",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"index",
+												"index",
+												"table-schema",
+												"admin_behavior_log"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "仪表盘",
+							"item": [
+								{
+									"name": "统计",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/index/dashboard/total",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"index",
+												"dashboard",
+												"total"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "系统管理",
+					"item": [
+						{
+							"name": "账户管理",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices"
+											],
+											"query": [
+												{
+													"key": "username",
+													"value": "admin",
+													"description": "用户名",
+													"disabled": true
+												},
+												{
+													"key": "mobile",
+													"value": "18866668888",
+													"description": "手机号码",
+													"disabled": true
+												},
+												{
+													"key": "realname",
+													"value": "管理员",
+													"description": "真实姓名",
+													"disabled": true
+												},
+												{
+													"key": "status",
+													"value": "0",
+													"description": "状态，0=>禁用，1=>正常",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "1",
+													"description": "分页",
+													"disabled": true
+												},
+												{
+													"key": "per-page",
+													"value": "10",
+													"description": "分页大小",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices/2",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "创建",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"username\": \"admin2\",\n    \"password\": \"123456\",\n    \"mobile\": \"16688886666\",\n    \"realname\": \"管理员2\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobile\": \"16688886666\",\n    \"realname\": \"管理员2\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices/2",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices/2",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "状态",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": 0\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices/status/3",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices",
+												"status",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "密码重置",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices/password/3",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices",
+												"password",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "角色分配",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roles_id\": [\n        1\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/indices/role/3",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"indices",
+												"role",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "角色管理",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/roles",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"roles"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "管理员",
+													"description": "名称",
+													"disabled": true
+												},
+												{
+													"key": "status",
+													"value": "0",
+													"description": "状态，0=>禁用，1=>正常",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/roles/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"roles",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "创建",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"permission_ids\": [\n        1\n    ],\n    \"name\": \"财务\",\n    \"description\": \"财务\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/roles",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"permission_ids\": [\n        1\n    ],\n    \"name\": \"产品\",\n    \"description\": \"产品人员\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/roles/2",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"roles",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/roles/3",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"roles",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "状态",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": 0\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/roles/status/2",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"roles",
+												"status",
+												"2"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "权限管理",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/permissions",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"permissions"
+											],
+											"query": [
+												{
+													"key": "menuId",
+													"value": null,
+													"description": "菜单ID",
+													"disabled": true
+												},
+												{
+													"key": "title",
+													"value": null,
+													"description": "标题",
+													"disabled": true
+												},
+												{
+													"key": "modules",
+													"value": null,
+													"description": "模块",
+													"disabled": true
+												},
+												{
+													"key": "controller",
+													"value": null,
+													"description": "控制器",
+													"disabled": true
+												},
+												{
+													"key": "action",
+													"value": null,
+													"description": "操作",
+													"disabled": true
+												},
+												{
+													"key": "name",
+													"value": null,
+													"description": "名称（路由）",
+													"disabled": true
+												},
+												{
+													"key": "method",
+													"value": null,
+													"description": "方法",
+													"disabled": true
+												},
+												{
+													"key": "status",
+													"value": null,
+													"description": "状态，0=>禁用，1=>正常",
+													"disabled": true
+												},
+												{
+													"key": "per-page",
+													"value": "1000",
+													"description": "分页大小",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/permissions/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"permissions",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "创建",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"menu_id\": 1,\n    \"title\": \"登录1\",\n    \"modules\": \"v1/admin/index\",\n    \"controller\": \"index\",\n    \"action\": \"login\",\n    \"name\": \"/v1/admin/index/index/login1\",\n    \"method\": \"POST\",\n    \"condition\": \"\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/permissions",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"menu_id\": 1,\n    \"title\": \"登录1\",\n    \"modules\": \"v1/admin/index\",\n    \"controller\": \"index\",\n    \"action\": \"login\",\n    \"name\": \"/v1/admin/index/index/login1\",\n    \"method\": \"POST\",\n    \"condition\": \"\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/permissions/60",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"permissions",
+												"60"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/permissions/60",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"permissions",
+												"60"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "状态",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": 0\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/permissions/status/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"permissions",
+												"status",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "菜单管理",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/menus",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"menus"
+											],
+											"query": [
+												{
+													"key": "parentId",
+													"value": "null",
+													"description": "父ID，0=>全部，null=>顶级，其他=>为下级",
+													"disabled": true
+												},
+												{
+													"key": "per-page",
+													"value": "1000",
+													"description": "分页大小",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/menus/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"menus",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "创建",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"平台管理1\"\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/menus",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"menus"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"parent\": null,\n    \"name\": \"平台管理1\",\n    \"sort\": 0,\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/menus/17",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"menus",
+												"17"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/menus/17",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"menus",
+												"17"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "状态",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": 0\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/menus/status/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"menus",
+												"status",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "树",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/menus/tree",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"menus",
+												"tree"
+											],
+											"query": [
+												{
+													"key": "parentId",
+													"value": "0",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "日志管理",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/logs",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"logs"
+											],
+											"query": [
+												{
+													"key": "adminId",
+													"value": "",
+													"description": "管理员ID",
+													"disabled": true
+												},
+												{
+													"key": "module",
+													"value": null,
+													"description": "模块",
+													"disabled": true
+												},
+												{
+													"key": "controller",
+													"value": null,
+													"description": "控制器",
+													"disabled": true
+												},
+												{
+													"key": "action",
+													"value": null,
+													"description": "操作",
+													"disabled": true
+												},
+												{
+													"key": "route",
+													"value": null,
+													"description": "路由",
+													"disabled": true
+												},
+												{
+													"key": "method",
+													"value": null,
+													"description": "方法",
+													"disabled": true
+												},
+												{
+													"key": "request_ip",
+													"value": null,
+													"description": "请求IP",
+													"disabled": true
+												},
+												{
+													"key": "status",
+													"value": null,
+													"description": "状态，0=>禁用，1=>启用",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/admin/logs/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"admin",
+												"logs",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "平台管理",
+					"item": []
+				},
+				{
+					"name": "用户管理",
+					"item": [
+						{
+							"name": "用户列表",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/indices",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"indices"
+											],
+											"query": [
+												{
+													"key": "username",
+													"value": "user1",
+													"description": "用户名",
+													"disabled": true
+												},
+												{
+													"key": "mobile",
+													"value": "19966889900",
+													"description": "手机号码",
+													"disabled": true
+												},
+												{
+													"key": "realname",
+													"value": "用户1",
+													"description": "真实姓名",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/indices/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"indices",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "创建",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"tag_ids\": [],\n    \"username\": \"user2\",\n    \"password\": \"123456\",\n    \"mobile\": \"19966889911\",\n    \"realname\": \"用户2\",\n    \"nickname\": \"用户2\",\n    \"avatar\": \"\",\n    \"sex\": 0,\n    \"birthday\": \"1998-08-08\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/indices",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"indices"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"tags\": [],\n    \"mobile\": \"19966889900\",\n    \"realname\": \"用户1\",\n    \"nickname\": \"用户1\",\n    \"avatar\": \"\",\n    \"sex\": 0,\n    \"birthday\": \"1970-01-01\",\n    \"status\": 1\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/indices/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"indices",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/indices/2",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"indices",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "状态",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"status\": 0\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/indices/status/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"indices",
+												"status",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "日志管理",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/logs",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"logs"
+											],
+											"query": [
+												{
+													"key": "parentId",
+													"value": "0",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/user/logs/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"user",
+												"logs",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "文件管理",
+					"item": [
+						{
+							"name": "文件列表",
+							"item": [
+								{
+									"name": "列表",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/file/indices",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"file",
+												"indices"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "详情",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/v1/admin/file/indices/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"file",
+												"indices",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "创建",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/Users/xihrni/Pictures/avatar.jpg"
+												},
+												{
+													"key": "status",
+													"value": "1",
+													"type": "text"
+												}
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/file/indices",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"file",
+												"indices"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"avatar.jpg\",\n    \"status\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/file/indices/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"file",
+												"indices",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/file/indices/1",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"file",
+												"indices",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "状态",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": 0\n}"
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/file/indices/status/2",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"file",
+												"indices",
+												"status",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "批量创建",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{admin_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "files[]",
+													"type": "file",
+													"src": [
+														"/Users/xihrni/Pictures/水墨女孩.jpeg",
+														"/Users/xihrni/Pictures/avatar.jpg",
+														"/Users/xihrni/Pictures/IMG_6359.PNG"
+													]
+												},
+												{
+													"key": "status",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{domain}}/v1/admin/file/indices/batch",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"v1",
+												"admin",
+												"file",
+												"indices",
+												"batch"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "用户端",
+			"item": [
+				{
+					"name": "首页",
+					"item": [
+						{
+							"name": "注册",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"user888\",\n    \"password\": \"123456\",\n    \"mobile\": \"18877889900\",\n    \"realname\": \"888\",\n    \"nickname\": \"8\",\n    \"avatar\": \"\",\n    \"sex\": 1,\n    \"birthday\": \"2020-02-02\",\n    \"last_login_terminal\": 1,\n    \"last_login_version\": \"0.0.1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/v1/user/index/register",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"index",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"123456\",\n    \"last_login_terminal\": 1,\n    \"last_login_version\": \"0.0.1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/v1/user/index/login",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"index",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "访问令牌",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"authorization\": \"xmnD_iHVqrtNxEwhibblZsFv2F4y0MBfh-QORJW7w-McfGkQv_6t_1587886747\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/v1/user/index/access-token",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"index",
+										"access-token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "个人信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{user_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/v1/user/index/person",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"index",
+										"person"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "个人信息更新",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{user_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"realname\": \"呵呵哒\",\n    \"nickname\": \"呵呵da\",\n    \"avatar\": \"\",\n    \"sex\": 1,\n    \"birthday\": \"2020-02-20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/v1/user/index/person",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"index",
+										"person"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "密码变更",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{user_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"123456\",\n    \"new_password\": \"12345678\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/v1/user/index/password",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"index",
+										"password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "手机号码变更",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{user_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"mobile\": \"19966889933\",\n\t\"smscode\": \"1816\",\n\t\"new_mobile\": \"19966889944\",\n\t\"new_smscode\": \"1816\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/v1/user/index/mobile",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"index",
+										"mobile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
